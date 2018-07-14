@@ -1,0 +1,107 @@
+"""" vundle
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+" Python autocompletion
+Plugin 'davidhalter/jedi-vim'
+" lean status/tabline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" shows a git diff in the sign column
+Plugin 'airblade/vim-gitgutter'
+" rainbow parentheses
+Plugin 'kien/rainbow_parentheses.vim'
+" bling the search
+Plugin 'ivyl/vim-bling'
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+" Fuzzy file
+Plugin 'ctrlpvim/ctrlp.vim'
+" JS and JSX
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+" Scala
+Plugin 'derekwyatt/vim-scala'
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on
+"""" vundle
+
+" custom vim
+syntax on
+set laststatus=2
+set number
+set hlsearch
+set autoindent
+set ruler
+set showmode
+set showmatch
+set shiftwidth=4
+set tabstop=4
+set ignorecase
+set smartcase
+set modifiable
+
+" backup off
+set nobackup
+set nowb
+set noswapfile
+
+" highlight space at the end of the line
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+
+" rainbow parentheses configuration
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" airline settings
+set t_Co=256
+let g:airline_theme='bubblegum'
+let g:airline_exclude_preview=1
+
+" NERDTree
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrows=0
+"au VimEnter *  NERDTree
+"autocmd VimEnter * wincmd p " jump to main window
+
+" gitgutter
+set updatetime=250
+
+" better spaces
+"let ToggleWhitespace=1
+
+" default maps
+map <F5> :setlocal spell! spelllang=en_us<CR>
+map <F6> :set number!<CR>
+map <F7> :noh<CR>
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+
+" Mac things
+set backspace=indent,eol,start
+
+
+" let g:pymode_python = 'python3'
+" autocmd FileType python setlocal completeopt-=preview
+" let g:jedi#show_call_signatures = "2"
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
+
